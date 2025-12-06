@@ -1,61 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Movie_WebSite</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Sen:wght@400..800&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Sen:wght@400..800&display=swap"
+        rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css
 ">
 
 </head>
+
 <body>
-   <div class="navbar">
-    <div class="navbar-container">
-        <div class="logo-container"><h1 class="logo">Logos</h1></div>
-        <div class="menu-container">
-            <ul class="menu-list">
-                <li class="menu-list-items active">Home</li>
-                <li class="menu-list-items">Movies</li>
-                <li class="menu-list-items">Series</li>
-                <li class="menu-list-items">Popular</li>
-                <li class="menu-list-items">Trends</li>
-
-            </ul>
-        </div>
-        <div class="profile-container">
-            <img class="profile-picture" src="./assets/images/OIP.webp">
-            <div class="profile-text-container">
-                <span class="profile-text">Profile</span>
-                <i class="fa-solid fa-caret-down"></i>
+    <div class="navbar">
+        <div class="navbar-container">
+            <div class="logo-container">
+                <h1 class="logo">Logos</h1>
             </div>
-            <div class="toggle">
-                <i class="fa-regular fa-moon toggle-icon"></i>
-                <i class="fa-regular fa-sun toggle-icon"></i>
-                <div class="toggle-ball"></div>
+            <div class="menu-container">
+                <ul class="menu-list">
+                    <li class="menu-list-items active">Home</li>
+                    <li class="menu-list-items">Movies</li>
+                    <li class="menu-list-items">Series</li>
+                    <li class="menu-list-items">Popular</li>
+                    <li class="menu-list-items">Trends</li>
+
+                </ul>
+            </div>
+            <div class="profile-container">
+                <img class="profile-picture" src="./assets/images/OIP.webp">
+                <div class="profile-text-container">
+                    <span class="profile-text">Profile</span>
+                    <i class="fa-solid fa-caret-down"></i>
+                </div>
+                <div class="toggle">
+                    <i class="fa-regular fa-moon toggle-icon"></i>
+                    <i class="fa-regular fa-sun toggle-icon"></i>
+                    <div class="toggle-ball"></div>
+                </div>
             </div>
         </div>
     </div>
-   </div>
-   <div class="sidebar">
-    <i class="left-menu-icon fas fa-house-chimney"></i>
-    <i class="left-menu-icon fas fa-magnifying-glass"></i>
-    <i class="left-menu-icon fas fa-users"></i>
-    <i class="left-menu-icon fas fa-bookmark"></i>
-    <i class="left-menu-icon fas  fa-tv"></i>
-    <i class="left-menu-icon fas fa-hourglass-start"></i>
-    <i class="left-menu-icon fas fa-cart-shopping"></i>
-   </div>
-   <div class="container">
-    <div class="content-container">
-       <div class="featured-content">
-        
-       </div>
+    <div class="sidebar">
+        <i class="left-menu-icon fas fa-house-chimney"></i>
+        <i class="left-menu-icon fas fa-magnifying-glass"></i>
+        <i class="left-menu-icon fas fa-users"></i>
+        <i class="left-menu-icon fas fa-bookmark"></i>
+        <i class="left-menu-icon fas  fa-tv"></i>
+        <i class="left-menu-icon fas fa-hourglass-start"></i>
+        <i class="left-menu-icon fas fa-cart-shopping"></i>
     </div>
-   </div>
+    <div class="container">
+        <div class="content-container">
+            <div class="featured-content"
+                style="background: linear-gradient(to bottom,rgba(0,0,0,0),#151515),url('assets/images/backgroundphoto.jpg');">
+                <img class="featured-title" src="assets/images/backgroundphoto.jpg" alt="">
+                <p class="featured-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Veniam enim eaque quisquam aspernatur,
+                    eius hic nisi sequi facilis optio ut facere ipsam magnam est, maiores mollitia dolor,
+                    quia quo excepturi?</p>
+                    <button class="featured-button">WATCH NOW</button>
+            </div>
+            <div class="movie-list-container">
+                <h1 class="movie-list-title">NEW RELEASES</h1>
+                <div class="movie-list-wrapper">
+                    <div class="movie-list">
+                        <div class="movie-list-item">
+                         <div class="movie-list-item-images" id="imgs"></div>
+                         <!-- <span class="movie-list-item-title">Her</span>
+                         <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                             Numquam, laborum delectus quae, perferendis similique error
+                              tempora odio beatae recusandae sit illo obcaecati labore,
+                               pariatur quasi fugit dolores commodi vero vel.</p>
+                               <button class="movie-list-button">WATCH</button> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-
+<script type="module" src="assets/scripts/main.js"></script>
 </body>
+
 </html>
+<h4></h4>
