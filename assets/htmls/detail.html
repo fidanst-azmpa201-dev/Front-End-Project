@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,30 +9,44 @@
         href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Sen:wght@400..800&display=swap"
         rel="stylesheet">
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../../style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css
 ">
 </head>
 
 <body>
-    <div class="container">
-        <div class="content-container">
-            <div class="detail-container">
-                <h1 class="detail-title"></h1>
-
-                <p><strong>Language:</strong>
-                    <span class="detail-lang"></span>
-                </p>
-
-                <p><strong>Rating:</strong>
-                    <span class="detail-rating"></span>
-                </p>
-
-                <p class="detail-summary"></p>
+    <div class="detail-page">
+        <div class="detail-header">
+            <h1 class="detail-title">Loading...</h1>
+            <button class="back-home" type="button">← BACK</button>
+        </div>
+        <div class="detail-content">
+            <div class="detail-poster-wrap">
+                <img class="detail-poster" src="" alt="Movie Poster" />
+            </div>
+            <div class="detail-info">
+                <div class="detail-rating-box">
+                    <span class="rating-label">Rating:</span>
+                    <span class="detail-rating">—</span>
+                </div>
+                <div class="detail-meta">
+                    <p class="meta-row"><span class="meta-label">Genres:</span><span class="detail-genres">—</span></p>
+                    <p class="meta-row"><span class="meta-label">Runtime:</span><span class="detail-runtime">—</span>
+                    </p>
+                    <p class="meta-row"><span class="meta-label">Premiered:</span><span
+                            class="detail-premiered">—</span></p>
+                    <p class="meta-row"><span class="meta-label">Language:</span><span class="detail-lang">—</span></p>
+                </div>
+                <div class="detail-summary-box">
+                    <h3>Synopsis</h3>
+                    <p class="detail-summary"></p>
+                </div>
             </div>
         </div>
     </div>
 
-    <script type="module" src="/assets/scripts/detail.js"></script>
+    <script type="module" src="../../assets/scripts/detail.js"></script>
+    <script type="module" src="../../assets/js/api.js"></script>
 </body>
+
 </html>

@@ -11,7 +11,7 @@ data.slice(0,10).forEach(films => {
                         <img src="${films.image.medium}"</img>
                         <h5 class="card-subtitle mb-2 text-body-secondary">${films.language}</h5>
                         <p class="card-text">${films.genres}</p>
-                         <p class="card-text">${films.summary}</p>
+                        
                         
                     </div>
                 </div>
@@ -30,7 +30,7 @@ data.slice(10,20).forEach(films => {
                         <img src="${films.image.medium}"</img>
                         <h5 class="card-subtitle mb-2 text-body-secondary">${films.language}</h5>
                         <p class="card-text">${films.genres}</p>
-                         <p class="card-text">${films.summary}</p>
+                          
                         
                     </div>
                 </div>
@@ -49,7 +49,7 @@ data.slice(20,30).forEach(films => {
                         <img src="${films.image.medium}"</img>
                         <h5 class="card-subtitle mb-2 text-body-secondary">${films.language}</h5>
                         <p class="card-text">${films.genres}</p>
-                         <p class="card-text">${films.summary}</p>
+                        
                         
                         
                     </div>
@@ -69,7 +69,7 @@ data.slice(30,40).forEach(films => {
                         <img src="${films.image.medium}"</img>
                         <h5 class="card-subtitle mb-2 text-body-secondary">${films.language}</h5>
                         <p class="card-text">${films.genres}</p>
-                        <p class="card-text">${films.summary}</p>
+                     
                     </div>
                 </div>
             </div>
@@ -107,15 +107,18 @@ async function loadMovies() {
         const sliced = data.slice(0, limit);
 
         sliced.forEach(films => {
+            const imgSrc = films.image && films.image.medium ? films.image.medium : 'assets/images/OIP.webp';
             moviesContainer.innerHTML += `
-
-             <div class="images">
-                        <h4 class="card-subtitle mb-2 text-body-secondary">${films.name}</h4>
-                        <img src="${films.image.medium}"</img>
-                        <h5 class="card-subtitle mb-2 text-body-secondary">${films.language}</h5>
-                        <p class="card-text">${films.genres}</p>
-                        <p class="card-text">${films.summary}</p>
-                
+                <div class="row" data-id="${films.id}">
+                    <div class="img" style="width: 18rem;">
+                        <div class="images">
+                            <h4 class="card-subtitle mb-2 text-body-secondary">${films.name}</h4>
+                            <img src="${imgSrc}" alt="${films.name}"/>
+                            <h5 class="card-subtitle mb-2 text-body-secondary">${films.language || 'N/A'}</h5>
+                            <p class="card-text">${(films.genres && films.genres.join(', ')) || ''}</p>
+                        </div>
+                    </div>
+                </div>
             `;
         });
 
@@ -128,6 +131,115 @@ async function loadMovies() {
 
 loadMoreBtn.addEventListener("click", loadMovies);
 loadMovies();
+
+
+document.addEventListener('click', (e) => {
+    const img = e.target.closest('img');
+    if (!img) return;
+    const row = img.closest('[data-id]');
+    if (!row) return;
+    const id = row.dataset.id;
+    if (!id) return;
+    const show = data.find(s => String(s.id) === String(id));
+    if (show) {
+        try {
+            localStorage.setItem('selectedShow', JSON.stringify(show));
+        } catch (err) {
+            console.error('Could not save show to localStorage', err);
+        }
+    }
+
+    window.location.href = `assets/htmls/detail.html?id=${encodeURIComponent(id)}`;
+});
+
+
+const searchIcon = document.getElementById('searchIcon');
+const searchInput = document.getElementById('searchInput');
+const searchContainer = document.querySelector('.search-container');
+let isSearchActive = false;
+
+searchIcon.addEventListener('click', async (e) => {
+    e.stopPropagation();
+    if (!isSearchActive) {
+       
+        searchContainer.classList.add('active');
+        isSearchActive = true;
+        searchInput.focus();
+    } else {
+        
+        const query = searchInput.value.trim();
+        if (query) {
+            await performSearch(query);
+        } else {
+            
+            collapseSearch();
+        }
+    }
+});
+
+searchInput.addEventListener('keydown', async (e) => {
+    if (e.key === 'Enter') {
+        const query = searchInput.value.trim();
+        if (query) {
+            await performSearch(query);
+        }
+    }
+});
+
+searchInput.addEventListener('blur', () => {
+    if (!searchInput.value.trim()) {
+        collapseSearch();
+    }
+});
+
+function collapseSearch() {
+    searchContainer.classList.remove('active');
+    searchInput.value = '';
+    isSearchActive = false;
+}
+
+async function performSearch(query) {
+    try {
+        const res = await fetch(`https://api.tvmaze.com/search/shows?q=${encodeURIComponent(query)}`);
+        const searchResults = await res.json();
+        
+       
+        const resultsData = searchResults.map(item => item.show);
+        updateMovieGrid(dataDiv1, resultsData.slice(0, 10));
+        
+        
+        dataDiv2.innerHTML = '';
+        dataDiv3.innerHTML = '';
+        dataDiv4.innerHTML = '';
+        
+        
+        const loadMoreBtn = document.getElementById('loadMoreBtn');
+        if (loadMoreBtn) loadMoreBtn.style.display = 'none';
+        
+        collapseSearch();
+    } catch (err) {
+        console.error('Search error:', err);
+    }
+}
+
+function updateMovieGrid(container, movies) {
+    container.innerHTML = '';
+    movies.forEach(film => {
+        const imgSrc = film.image && film.image.medium ? film.image.medium : 'assets/images/OIP.webp';
+        container.innerHTML += `
+            <div class="row" data-id="${film.id}">
+                <div class="img" style="width: 18rem;">
+                    <div class="images">
+                        <h4 class="card-subtitle mb-2 text-body-secondary">${film.name}</h4>
+                        <img src="${imgSrc}" alt="${film.name}"/>
+                        <h5 class="card-subtitle mb-2 text-body-secondary">${film.language || 'N/A'}</h5>
+                        <p class="card-text">${(film.genres && film.genres.join(', ')) || ''}</p>
+                    </div>
+                </div>
+            </div>
+        `;
+    });
+}
 
 
 

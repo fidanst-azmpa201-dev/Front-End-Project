@@ -350,6 +350,274 @@ body{
 }
 
 
+.search-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 100%;
+}
+
+.search-icon {
+  cursor: pointer;
+  z-index: 10;
+  color: white;
+  font-size: 20px;
+  transition: all 0.3s ease;
+}
+
+.search-input {
+  position: absolute;
+  width: 0;
+  padding: 0 10px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  color: white;
+  font-size: 14px;
+  outline: none;
+  transition: width 0.3s ease, padding 0.3s ease;
+}
+
+.search-input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.search-container.active .search-input {
+  width: 150px;
+  padding: 8px 15px;
+}
+
+
+.detail-page {
+  background-color: #000;
+  color: #fff;
+  min-height: 100vh;
+  padding: 40px 20px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto 40px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.detail-title {
+  font-size: 32px;
+  font-weight: 700;
+  margin: 0;
+  flex: 1;
+}
+
+.back-home {
+  background-color: transparent;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.back-home:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.detail-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.detail-poster-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.detail-poster {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.detail-poster:hover {
+  transform: scale(1.05);
+  box-shadow: 0 15px 50px rgba(255, 255, 255, 0.1);
+}
+
+.detail-info {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.detail-rating-box {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  font-size: 18px;
+}
+
+.rating-label {
+  font-weight: 600;
+  color: #aaa;
+}
+
+.detail-rating {
+  font-size: 24px;
+  font-weight: 700;
+  color: #ffd700;
+}
+
+.detail-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.meta-row {
+  display: flex;
+  gap: 12px;
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.meta-label {
+  font-weight: 600;
+  color: #aaa;
+  min-width: 100px;
+}
+
+.detail-genres,
+.detail-runtime,
+.detail-premiered,
+.detail-lang {
+  color: #e0e0e0;
+}
+
+.detail-summary-box {
+  margin-top: 20px;
+}
+
+.detail-summary-box h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 12px 0;
+  color: #fff;
+}
+
+.detail-summary {
+  font-size: 14px;
+  line-height: 1.8;
+  color: #c0c0c0;
+  margin: 0;
+}
+
+.detail-summary p {
+  margin: 0 0 12px 0;
+}
+
+.detail-summary p:last-child {
+  margin-bottom: 0;
+}
+
+
+@media (max-width: 900px) {
+  .detail-content {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .detail-poster-wrap {
+    order: -1;
+  }
+}
+
+@media (max-width: 640px) {
+  .detail-page {
+    padding: 20px 16px;
+  }
+
+  .detail-header {
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 30px;
+  }
+
+  .detail-title {
+    font-size: 24px;
+  }
+
+  .back-home {
+    width: 100%;
+    text-align: center;
+  }
+
+  .detail-poster {
+    max-width: none;
+  }
+
+  .meta-row {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .meta-label {
+    min-width: auto;
+  }
+}
+
+
+.load-more-container {
+  display: flex;
+  justify-content: center;
+  padding: 40px 0;
+  margin-top: 20px;
+}
+
+.load-more-button {
+  background-color: rgb(120, 2, 2);
+  color: white;
+  border: none;
+  padding: 12px 40px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.load-more-button:hover {
+  background-color: rgb(150, 5, 5);
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(120, 2, 2, 0.4);
+}
+
+.load-more-button:active {
+  transform: scale(0.98);
+}
+
+
 
 
 
